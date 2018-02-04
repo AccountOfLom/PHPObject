@@ -42,21 +42,14 @@ class Reward
                 $rewardMoney[$i] = 0.01;
             }
         } else {
-            $rewardMoney = [];                 //接收分配好的红包
+            $rewardMoney = [];                       //接收分配好的红包
             $constant = $this->totalAmount;          //红包总额  （元）
             $surplus = $this->totalAmount * 100;     //剩余金额  （分）
-            $paid = 0;                         //已分配出去的金额
+            $paid = 0;                               //已分配出去的金额
 
-            for ($i = 0; $i <= $this->quantity - 1; $i ++) {
+            for ($i = 0; $i <= $this->quantity - 2; $i ++) {
                 //随机当前份额： 1~20%
                 $range = rand(1, 200);
-                if ($i == ($this->quantity - 1)) {
-                    //最后一个红包，总金额 - 已分配金额
-                    //float 有时数值算不准，会多出 0.0000000000001 ，直接省略
-                    $tempData = (float) sprintf("%.2f", ($constant - $paid));
-                    $rewardMoney[$i] = $tempData && $tempData > 0.01 ? $tempData : 0.01;
-                    break;
-                }
                 //当前分配金额  = （当前剩余金额 / 当前未分配红包数）* 随机百分比（1~20%），
                 //单位（元）
                 $tempData = (float) (sprintf("%.2f", floor($surplus / ($this->quantity - $i) * $range / 100)) / 100);
@@ -65,8 +58,12 @@ class Reward
                 //当前剩余金额 单位 （分）
                 $surplus -= $rewardMoney[$i] * 100;
             }
-            //打乱元素排序
-            //        shuffle($rewardMoney);
+            //最后一个红包，总金额 - 已分配金额
+            //float 有时数值算不准，会多出 0.0000000000001 ，直接省略
+            $tempData = (float) sprintf("%.2f", ($constant - $paid));
+            $rewardMoney[$i] = $tempData && $tempData > 0.01 ? $tempData : 0.01;
+            //打乱红包排序
+            // shuffle($rewardMoney);
         }
         $this->rewardMoney = $rewardMoney;
         return true;

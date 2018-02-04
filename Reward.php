@@ -27,14 +27,14 @@ class CreateReward
     {
         $this->totalAmount = $totalAmount;
         $this->quantity = $quantity;
-        $this->randomMoney();
+        $this->createRandomMoney();
     }
 
     /**
      *生成红包
      * @return array  rewardMoney     红包数据集
      */
-    public function randomMoney()
+    public function createRandomMoney()
     {
         $rewardMoney = [];
         if ($this->quantity / 100 == $this->totalAmount) {

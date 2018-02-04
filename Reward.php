@@ -36,13 +36,12 @@ class Reward
      */
     public function createRandomMoney()
     {
-        $rewardMoney = [];
+        $rewardMoney = [];   //接收分配好的红包
         if ($this->quantity / 100 == $this->totalAmount) {
             for ($i = 0; $i <= $this->quantity - 1; $i ++) {
-                $rewardMoney[$i] = 0.01;
+                $rewardMoney[] = 0.01;
             }
         } else {
-            $rewardMoney = [];                       //接收分配好的红包
             $constant = $this->totalAmount;          //红包总额  （元）
             $surplus = $this->totalAmount * 100;     //剩余金额  （分）
             $paid = 0;                               //已分配出去的金额

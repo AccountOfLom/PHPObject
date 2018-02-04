@@ -21,6 +21,7 @@ class CreateReward
 {
     public $totalAmount = 0;        //红包总金额
     public $quantity = 0;           //红包个数
+    public $rewardMoney = [];       //红包集
 
     public function __construct($totalAmount, $quantity)
     {
@@ -66,6 +67,7 @@ class CreateReward
             //打乱元素排序
             //        shuffle($rewardMoney);
         }
-        return $rewardMoney;
+        $this->rewardMoney = $rewardMoney;
+        return true;
     }
 }

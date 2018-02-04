@@ -12,7 +12,7 @@
 </head>
 <body style="padding: 40px;">
     <div style="background-color: #f8f8f8;">
-        <form action="show_data.php" method="post">
+        <form action="show.php" method="post">
             红包总额：<input type="number" name="total_mount" value="<?php echo isset($formattingData) ? $formattingData->totalAmount : '';?>" placeholder="请输入"><br/>
             红包个数：<input type="number" name="quantity" value="<?php echo isset($formattingData) ? $formattingData->quantity : '';?>" placeholder="请输入"><br/>
             <input type="submit" value="计算">

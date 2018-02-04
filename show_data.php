@@ -10,7 +10,7 @@
 $totalAmount = isset($_POST['total_mount']) ? $_POST['total_mount'] : 0;
 $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 0;
 
-if ($quantity * 0.01 > $totalAmount || !$totalAmount || !$quantity || $quantity < 1) {
+if (!$totalAmount || !$quantity || $quantity < 1 || $quantity * 0.01 > $totalAmount) {
     die('<h3>数据输入错误！红包个数至少为1且红包总金额数不小于 红包个数 * 0.01</h3>');
 } else {
     require ('CreateReward.php');

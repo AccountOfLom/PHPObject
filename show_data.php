@@ -16,7 +16,7 @@ if (!$totalAmount || !$quantity || $quantity < 1 || $quantity * 0.01 > $totalAmo
     require ('CreateReward.php');
     require ('FormattingData.php');
     //生成红包
-    $reward = new CreateReward($totalAmount, $quantity);
+    $reward = new Reward($totalAmount, $quantity);
     //红包数据看板
     $formattingData = new FormattingData($reward->randomMoney, $totalAmount, $quantity);
 }

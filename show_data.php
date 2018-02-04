@@ -12,14 +12,15 @@ $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 0;
 
 if (!$totalAmount || !$quantity || $quantity < 1 || $quantity * 0.01 > $totalAmount) {
     die('<h3>数据输入错误！红包个数至少为1且红包总金额数不小于 红包个数 * 0.01</h3>');
-} else {
-    require ('Reward.php');
-    require ('FormattingData.php');
-    //生成红包
-    $reward = new Reward($totalAmount, $quantity);
-    //红包数据看板
-    $formattingData = new FormattingData($reward->rewardMoney, $totalAmount, $quantity);
 }
+
+require ('Reward.php');
+require ('FormattingData.php');
+//生成红包
+$reward = new Reward($totalAmount, $quantity);
+//红包数据看板
+$formattingData = new FormattingData($reward->rewardMoney, $totalAmount, $quantity);
+
 require ('index.php');
 ?>
 

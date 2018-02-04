@@ -17,7 +17,7 @@
  * 最后一个红包为（总金额 - 已分配所有金额）
  * 每个红包至少0.01元
  */
-class CreateReward
+class Reward
 {
     public $totalAmount = 0;        //红包总金额
     public $quantity = 0;           //红包个数

@@ -27,6 +27,7 @@ class CreateReward
     {
         $this->totalAmount = $totalAmount;
         $this->quantity = $quantity;
+        $this->randomMoney();
     }
 
     /**

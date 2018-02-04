@@ -24,6 +24,7 @@ class FormattingData
     public function __construct($rewardMoney, $totalAmount, $quantity)
     {
         $this->rewardMoney = $rewardMoney;
+        $this->total = array_sum($rewardMoney);
         $this->totalAmount = $totalAmount;
         $this->quantity = $quantity;
         $this->formattingAction();
@@ -51,10 +52,6 @@ class FormattingData
         rsort($Gaussian);
         $this->min = $Gaussian[count($Gaussian) - 1];
         $this->max = $Gaussian[0];
-
-        foreach ($this->rewardMoney as $v) {
-            $this->total += $v;
-        }
 
         //正态分布
         foreach($Gaussian as $k => $value)

@@ -32,7 +32,7 @@ class Reward
 
     /**
      *生成红包
-     * @return array  rewardMoney     红包数据集
+     * @return bool
      */
     public function createRandomMoney()
     {
